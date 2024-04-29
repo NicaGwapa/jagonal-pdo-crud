@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "config.php";
+require_once "db/config.php";
 
 // Define variables and initialize with empty values
 $productName = $productDescription = $productRetailPrice = "";
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $productRetailPrice = $row["product_retail_price"];
                 } else {
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
+                    header("location: public/error.php");
                     exit();
                 }
             } else {

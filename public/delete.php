@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+require_once "db/config.php";
 
 // Process delete operation after confirmation
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit();
         }
     } else {
-        header("Location: error.php");
+        header("Location: public/error.php");
         exit();
     }
 }
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // Check existence of id parameter
 if (empty($_GET["id"])) {
     // URL doesn't contain id parameter. Redirect to error page
-    header("Location: error.php");
+    header("Location:public/error.php");
     exit();
 }
 

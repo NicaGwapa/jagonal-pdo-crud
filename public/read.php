@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "config.php";
+require_once "db/config.php";
 
 // Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
@@ -30,7 +30,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $productUpdatedDate = $row["product_updated_date"];
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: public/error.php");
                 exit();
             }
             
@@ -44,7 +44,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: public/error.php");
     exit();
 }
 ?>
