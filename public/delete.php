@@ -1,5 +1,5 @@
 <?php
-require_once "db/config.php";
+require_once "./db/config.php";
 
 // Process delete operation after confirmation
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
