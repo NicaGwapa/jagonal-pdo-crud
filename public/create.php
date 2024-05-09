@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Records created successfully. Redirect to index.php
-                header("location: ./index.php");
+                header("location: ../public/welcome.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -106,7 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="invalid-feedback"><?php echo $product_retail_price_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="./index.php" class="btn btn-secondary ml-2">Cancel</a>
+                        <a href="../public/welcome.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>
                 </div>
             </div>        
