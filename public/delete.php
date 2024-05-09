@@ -1,5 +1,5 @@
 <?php
-require_once "./db/config.php";
+require_once "../db/config.php";
 
 // Process delete operation after confirmation
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -13,14 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->bindParam(":id", $id);
             $stmt->execute();
 
-            header("Location: index.php");
+            header("Location: ../public/welcome.php");
             exit();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             exit();
         }
     } else {
-        header("Location: public/error.php");
+        header("Location: error.php");
         exit();
     }
 }
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // Check existence of id parameter
 if (empty($_GET["id"])) {
     // URL doesn't contain id parameter. Redirect to error page
-    header("Location:public/error.php");
+    header("Location: error.php");
     exit();
 }
 
@@ -60,7 +60,7 @@ $id = trim($_GET["id"]);
                             <p>Are you sure you want to delete this product record?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
-                                <a href="index.php" class="btn btn-secondary ml-2">No</a>
+                                <a href="../public/welcome.php" class="btn btn-secondary ml-2">No</a>
                             </p>
                         </div>
                     </form>
