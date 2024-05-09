@@ -1,6 +1,6 @@
 <?php
-// Include config file
-require_once "db/config.php";
+// Include ../db/config.php file
+require_once "../db/config.php";
 
 // Define variables and initialize with empty values
 $productName = $productDescription = $productRetailPrice = "";
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: ../public/welcome.php");
                 exit();
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $productRetailPrice = $row["product_retail_price"];
                 } else {
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: public/error.php");
+                    header("location: error.php");
                     exit();
                 }
             } else {
@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>"/>
                     <input type="submit" class="btn btn-primary" value="Submit">
-                    <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                    <a href="../public/welcome.php" class="btn btn-secondary ml-2">Cancel</a>
                 </form>
             </div>
         </div>
