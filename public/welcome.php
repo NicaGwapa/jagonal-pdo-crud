@@ -39,7 +39,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         body {
-    background-image: url('https://media.istockphoto.com/id/911910816/vector/metal-texture-background-vector-illustration.jpg?s=612x612&w=0&k=20&c=-YAYlzyurPoRIizKappOSfsv9trOqd_UwvvbPkijG0s=');
+    background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjEwMTYtYy0wOF8xLWtzaDZtemEzLmpwZw.jpg');
     /* You can set additional properties like background size, repeat, position, etc. */
     background-size: cover; /* This will make the image cover the entire background */
     background-repeat: no-repeat; /* This will prevent the image from repeating */
