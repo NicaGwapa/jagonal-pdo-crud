@@ -7,165 +7,150 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
     <style>
-        /* Styles omitted for brevity */
+        /* Define a class for the grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid with minimum item width of 250px */
+            gap: 20px; /* Gap between grid items */
+            padding: 20px; /* Add padding around the grid container */
+            width: 80%; /* Set width to 80% */
+        }
+
+        /* Style for individual cards */
+        .card {
+            width: 100%; /* Ensure cards take full width of their container */
+        }
+
+        .card-img-top{
+            width: 100%; /* Ensure the image fills its container */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Ensure the image covers the entire container */
+        }
+        /* Style for the cart */
+        #cartContainer {
+            position: fixed;
+            top: 4em;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
     </style>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Navbar content omitted for brevity -->
+    <a class="navbar-brand" href="#">
+        <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Bootstrap
+    </a>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
 </nav>
 <body>
+
     <div id="productsDisplay" class="card-grid"></div>
     <!-- Cart Display Area -->
     <div id="cartContainer"></div>
-    <!-- Checkout Area -->
-    <div id="checkoutContainer" style="display: none;">
-        <h3>Checkout</h3>
-        <form id="checkoutForm">
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" class="form-control" id="address" required>
+
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Product details will be filled here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="it28-admin/address/payment.php" class="btn btn-primary" id="buyButton">Buy</a>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="payment">Payment Method:</label>
-                <select class="form-control" id="payment" required>
-                    <option value="Credit Card">Credit Card</option>
-                    <option value="Debit Card">Debit Card</option>
-                    <option value="PayPal">PayPal</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Place Order</button>
-        </form>
+        </div>
     </div>
 
     <script>
-        let cart = {};
-
         fetch('./products/products-api.php')
             .then(response => response.json())
             .then(data => {
-                const productsContainer = document.getElementById('productsDisplay');
+                const booksContainer = document.getElementById('productsDisplay');
                 data.forEach(product => {
                     const cardHTML = `
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="${product.img}">
-                        <div class="card-body">
-                            <h5 class="card-title">${product.title}</h5>
-                            <p class="card-text">Price: ₱${product.rrp}</p>
-                            <p class="card-text">${product.description}</p>
-                            <p class="card-text">Quantity: <span id="product-quantity-${product.id}">${product.quantity}</span></p>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button class="btn btn-success" onclick="addToCart(${product.id}, '${product.title}', ${product.rrp}, ${product.quantity})">
-                                    <i class="fas fa-cart-plus"></i> Add to Cart
-                                </button>
-                                <button class="btn btn-primary" onclick="buyNow(${product.id}, '${product.title}', ${product.rrp}, ${product.quantity})">
-                                    Buy Now
-                                </button>
-                                <button class="btn btn-secondary" onclick="incrementQuantity(${product.id})">
-                                    +
-                                </button>
-                                <button class="btn btn-secondary" onclick="decrementQuantity(${product.id})">
-                                    -
+                            <div class="card-body">
+                                <h5 class="card-title">${product.title}</h5><br>Price: ₱${product.rrp}<br>
+                                <p class="card-text">${product.description}.</p>
+                                <p class="card-text"<br>Quantity: ${product.quantity}</p>
+                                 <button class="btn btn-success" onclick="showProductModal('${product.title}', '${product.rrp}')">
+                                    <i class="fas fa-cart-plus"></i> <!-- Add to Cart icon -->
+                                    Add to Cart
                                 </button>
                             </div>
-                        </div>
-                    </div>`;
-                    productsContainer.innerHTML += cardHTML;
+                    </div>
+                    `;
+                    booksContainer.innerHTML += cardHTML;
                 });
             })
             .catch(error => console.error('Error:', error));
 
-        function addToCart(productId, productName, productPrice, availableQuantity) {
+        // Function to display the product modal
+        function showProductModal(title, price) {
+            document.getElementById('modalBody').innerHTML = `
+                <p>Name: ${title}</p>
+                <p>Price: ₱${price}</p>
+            `;
+            $('#productModal').modal('show');
+        }
+
+        // Initialize cart object
+        let cart = {};
+
+        // Function to add a product to the cart
+        function addToCart(productId) {
+            // Add the product to the cart
             if (cart[productId]) {
-                if (cart[productId].quantity < availableQuantity) {
-                    cart[productId].quantity++;
-                } else {
-                    alert('No more stock available');
-                }
+                cart[productId]++;
             } else {
-                cart[productId] = { 
-                    name: productName,
-                    price: productPrice,
-                    quantity: 1,
-                    availableQuantity: availableQuantity 
-                };
+                cart[productId] = 1;
             }
+            // Display the updated cart
             displayCart();
         }
 
-        function buyNow(productId, productName, productPrice, availableQuantity) {
-            if (cart[productId]) {
-                if (cart[productId].quantity < availableQuantity) {
-                    cart[productId].quantity++;
-                } else {
-                    alert('No more stock available');
-                    return;
-                }
-            } else {
-                cart[productId] = { 
-                    name: productName,
-                    price: productPrice,
-                    quantity: 1,
-                    availableQuantity: availableQuantity 
-                };
-            }
-            checkout();
-        }
-
-        function incrementQuantity(productId) {
-            if (cart[productId] && cart[productId].quantity < cart[productId].availableQuantity) {
-                cart[productId].quantity++;
-                displayCart();
-            } else {
-                alert('No more stock available');
-            }
-        }
-
-        function decrementQuantity(productId) {
-            if (cart[productId] && cart[productId].quantity > 1) {
-                cart[productId].quantity--;
-            } else {
-                delete cart[productId];
-            }
-            displayCart();
-        }
-
+        // Function to display the cart with the items added and deduct the values from the quantity data field
         function displayCart() {
             const cartContainer = document.getElementById('cartContainer');
             let cartHTML = '<h3>Cart</h3>';
-            let totalQuantity = 0;
-            let totalPrice = 0;
-            for (const [productId, product] of Object.entries(cart)) {
-                totalQuantity += product.quantity;
-                totalPrice += product.price * product.quantity;
-                cartHTML += `
-                    <div class="cart-item">
-                        <p>Name: ${product.name}, Price: ₱${product.price}, Quantity: ${product.quantity}</p>
-                        <div class="btn-group">
-                            <button class="btn btn-primary btn-sm" onclick="incrementQuantity(${productId})">+</button>
-                            <button class="btn btn-secondary btn-sm" onclick="decrementQuantity(${productId})">-</button>
-                        </div>
-                    </div>`;
+            // Iterate over the cart items and display them
+            for (const [productId, quantity] of Object.entries(cart)) {
+                cartHTML += `<p>Product ID: ${productId}, Quantity: ${quantity}</p>`;
+                // Here, you can update the quantity data field for the corresponding product
             }
-            if (Object.keys(cart).length > 0) {
-                cartHTML += `<button class="btn btn-success" onclick="checkout()">Buy Now</button>`;
-            }
-            cartHTML += `<p>Total Quantity: ${totalQuantity}, Total Price: ₱${totalPrice}</p>`;
+            // Update the cart display
             cartContainer.innerHTML = cartHTML;
         }
-
-        function checkout() {
-            document.getElementById('checkoutContainer').style.display = 'block';
-        }
-
-        document.getElementById('checkoutForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const address = document.getElementById('address').value;
-            const paymentMethod = document.getElementById('payment').value;
-            alert(`Order placed!\nAddress: ${address}\nPayment Method: ${paymentMethod}`);
-            cart = {};
-            displayCart();
-            document.getElementById('checkoutContainer').style.display = 'none';
-        });
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
