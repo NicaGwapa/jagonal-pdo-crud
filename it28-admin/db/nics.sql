@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2024 at 11:22 AM
+-- Generation Time: May 27, 2024 at 03:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `it28-ecommerce`
+-- Database: `products`
 --
 
 -- --------------------------------------------------------
@@ -43,31 +43,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `rrp`, `quantity`, `img`, `date_added`) VALUES
-(1, 'Isaw', 'Grilled chicken or pork intestines marinated in a tangy and spicy sauce.', 20, 25, 50, 'https://www.lasabbq.com/cdn/shop/products/BBQChickenIsaw1.jpg', '2024-05-08 00:00:00'),
-(2, 'Balut', 'Fertilized duck embryo boiled and commonly sold as street food in the Philippines.', 15, 20, 30, 'https://facts.net/wp-content/uploads/2020/10/AdobeStock_279704615.jpeg', '2024-05-08 00:00:00'),
-(3, 'Kwek-Kwek', 'Quail eggs coated in orange batter and deep-fried, often served with vinegar.', 10, 15, 40, 'https://www.kawalingpinoy.com/wp-content/uploads/2019/07/kwek-kwek-14.jpg', '2024-05-08 00:00:00'),
-(4, 'Fish Balls', 'Deep-fried fish balls served with sweet and spicy sauce.', 12, 18, 60, 'https://www.foxyfolksy.com/wp-content/uploads/2021/05/fish-balls.jpg', '2024-05-08 00:00:00'),
-(5, 'Taho', 'Silken tofu topped with sweet syrup and tapioca pearls.', 25, 30, 20, 'https://i0.wp.com/iankewks.com/wp-content/uploads/2023/06/IMG_2347.jpg', '2024-05-08 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
-(1, 'admin', '$2y$10$kGp4g1TjBK4XwLIwRbBHSeZ4W5FpPbYoB1ap5NfFUjUPAcE3KR5QG', '2024-04-29 16:39:58');
+(1, 'Geek Vape', ' Known for excellent build quality and innovation, including the popular Aegis series.', 2000, 2000, 100, 'https://www.copvape.com/wp-content/uploads/2023/12/geek-vape-aegis-max-2-kit-main.jpg', '2024-05-08 00:00:00'),
+(2, 'Voopoo', 'VooPoo is responsible for making some of our best selling vape kits.', 1500, 1500, 100, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS22LstprAbEw_HiTCDVBF5WiPpIXnR3BxzpQ&usqp=CAU', '2024-05-08 00:00:00'),
+(4, 'MCM Vape', 'Authentic & innovative Philippine-made vaping products, such as full-mechanical box and tube mods, RDAs, RDTAs.', 2500, 2500, 100, 'https://www.vaping-delights.com/cdn/shop/products/image_2d032e5e-64a8-49c7-b1c8-f7da4de27ee6.jpg?v=1646851415', '2024-05-08 00:00:00'),
+(6, 'Kalasag Full Mech', 'A beautiful Filipino box mod in the stacked version. The box is a mech box, so it has no electronics! With 4 batteries', 1200, 1200, 100, 'https://i.pinimg.com/originals/b9/34/ef/b934ef87c4a90c504ec3755859b292cd.jpg', '2024-05-08 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -87,7 +66,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

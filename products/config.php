@@ -1,7 +1,7 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'nics';
+$dbname = 'products';
 $username = 'root';
 $password = '';
 /*
