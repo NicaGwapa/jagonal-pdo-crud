@@ -5,10 +5,11 @@ $dbname = 'products';
 $username = 'root';
 $password = '';
 /*
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'u593341949_dev_demo');
-define('DB_PASSWORD', 'Admin_demo123');
-define('DB_NAME', 'u593341949_db_demo');
+<?php
+$host = 'localhost';
+$dbname = 'u593341949_db_jagonal';
+$username = 'u593341949_dev_jagonal';
+$password = '20212063Jagonal';
 */
 try {
  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
