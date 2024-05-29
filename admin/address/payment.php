@@ -31,80 +31,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <style>
     body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f7f7f7;
-}
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
 
-.container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-}
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
 
-input[type="submit"] {
-    width: auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+    input[type="submit"] {
+        width: auto;
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-p {
-    text-align: center;
-    margin-top: 20px;
-    color: #555;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
 </style>
 <body>
     <h2>Make Payment</h2>
@@ -121,6 +104,8 @@ a:hover {
         </select><br><br>
         <input type="submit" value="Submit">
     </form>
-    <p style="text-align: center; margin-top: 20px;"><a href="address.php">Already submitted the payment? Enter your address here.</a></p>
+
+    <!-- Link to address.php -->
+    <p style="text-align: center; margin-top: 20px;">Already submitted the payment? <a href="address.php">Enter your address here.</a></p>
 </body>
 </html>

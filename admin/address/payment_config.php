@@ -1,15 +1,16 @@
 <?php
-// Database configuration
+// Database configuration using PDO
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "products";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // echo "Connected successfully";
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
 ?>

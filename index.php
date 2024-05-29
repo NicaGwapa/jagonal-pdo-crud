@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
     <style>
         body {
-            background: url(https://t4.ftcdn.net/jpg/05/59/10/47/360_F_559104759_snmQpAvRntOpDaOze60M0mNKplw84NMZ.jpg);
+            background: url(https://static.vecteezy.com/system/resources/previews/023/978/504/non_2x/a-man-standing-in-front-of-a-cloud-of-smoke-with-neon-lights-ai-generated-free-photo.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -143,8 +143,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#">
-            <img src="https://www.shutterstock.com/image-illustration/zone-vaping-neon-sign-template-260nw-1124608298.jpg" width="30" height="30" class="d-inline-block align-top" alt="Softball Logo">
-            <span style="color: white;">Pa-puff Dol</span>
+            <img src="https://static.vecteezy.com/system/resources/previews/023/978/504/non_2x/a-man-standing-in-front-of-a-cloud-of-smoke-with-neon-lights-ai-generated-free-photo.jpg" width="30" height="30" class="d-inline-block align-top" alt="Softball Logo">
+            <span style="color: white;">PA-PUFF DOL</span>
         </a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -174,7 +174,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a href="admin/payment/payment.php" class="btn btn-primary" id="buyButton">Buy</a>
+                    <a href="admin/address/payment.php" class="btn btn-primary" id="buyButton">Buy</a>
                 </div>
             </div>
         </div>
