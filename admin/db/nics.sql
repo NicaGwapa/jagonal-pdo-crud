@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 07:35 AM
+-- Generation Time: May 30, 2024 at 04:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `products`
+-- Database: `baslao`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,7 @@ CREATE TABLE `addresses` (
   `state` varchar(100) NOT NULL,
   `postal_code` varchar(20) NOT NULL,
   `country` varchar(100) NOT NULL,
+  `payment_id` int(6) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -42,9 +43,7 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`id`, `street_address`, `city`, `state`, `postal_code`, `country`, `created_at`) VALUES
-(1, '', '', '', '', '', '2024-05-27 07:08:03'),
-(2, '', '', '', '', '', '2024-05-27 07:08:06'),
-(3, 'lingon', 'none', 'mindanao', '2322', 'phillipines', '2024-05-29 05:29:54');
+(1, 'kalanawan', 'none', 'mindanao', '2323', 'phillipines', '2024-05-29 09:44:32');
 
 -- --------------------------------------------------------
 
@@ -64,9 +63,7 @@ CREATE TABLE `payments` (
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`id`, `product_name`, `price`, `payment_method`, `created_at`) VALUES
-(1, '', 0.00, 'PayMaya', '2024-05-27 08:22:34'),
-(2, 'after', 20.00, 'PayMaya', '2024-05-29 05:29:42');
+
 
 -- --------------------------------------------------------
 
@@ -77,7 +74,7 @@ INSERT INTO `payments` (`id`, `product_name`, `price`, `payment_method`, `create
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `rrp` decimal(10,0) NOT NULL DEFAULT 0,
   `quantity` int(11) NOT NULL,
@@ -88,6 +85,7 @@ CREATE TABLE `products` (
 --
 -- Dumping data for table `products`
 --
+
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `rrp`, `quantity`, `img`, `date_added`) VALUES
 (1, 'Geek Vape', ' Known for excellent build quality and innovation, including the popular Aegis series.', 2000, 2000, 100, 'https://www.copvape.com/wp-content/uploads/2023/12/geek-vape-aegis-max-2-kit-main.jpg', '2024-05-08 00:00:00'),
@@ -113,6 +111,8 @@ CREATE TABLE `users` (
 --
 
 
+
+
 --
 -- Indexes for dumped tables
 --
@@ -121,24 +121,13 @@ CREATE TABLE `users` (
 -- Indexes for table `addresses`
 --
 ALTER TABLE `addresses`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payment_id` (`payment_id`);
 
 --
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -149,25 +138,23 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `products`
+-- Constraints for dumped tables
 --
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `users`
+-- Constraints for table `addresses`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `addresses`
+  ADD CONSTRAINT `addresses_ibfk_1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
