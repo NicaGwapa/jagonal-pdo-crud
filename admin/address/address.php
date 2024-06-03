@@ -40,6 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Address Form</title>
     <style>
         body {
+            background: url(https://i.pinimg.com/originals/02/74/29/027429922506a58284df43f81914e208.gif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -50,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             max-width: 400px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color:transparent;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -58,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: #333;
+            color: #fff;
         }
 
         form {
@@ -69,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         label {
             font-weight: bold;
             margin-bottom: 5px;
-            color: #555;
+            color: #fff;
         }
 
         input[type="text"] {

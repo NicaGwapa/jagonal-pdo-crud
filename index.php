@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
        body {
-            background: url(https://t4.ftcdn.net/jpg/06/25/09/61/360_F_625096171_6gCQOZEVgtMFzrzZ7AcRQbiB73c146Mx.jpg);
+            background: url(https://as2.ftcdn.net/v2/jpg/05/61/60/87/1000_F_561608718_9JL57vvzTZirltO0J7uh10fZlxHi98wz.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;

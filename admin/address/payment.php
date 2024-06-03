@@ -47,6 +47,10 @@ $conn->close();
     <title>Payment</title>
     <style>
         body {
+            background: url(https://media1.tenor.com/m/ZdZnWutyhOMAAAAC/flames-fire.gif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -57,7 +61,7 @@ $conn->close();
             max-width: 400px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color:transparent;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -65,7 +69,7 @@ $conn->close();
         h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: #333;
+            color: #fff;
         }
 
         form {
@@ -76,7 +80,7 @@ $conn->close();
         label {
             font-weight: bold;
             margin-bottom: 5px;
-            color: #555;
+            color: #fff;
         }
 
         input[type="text"],
